@@ -1,0 +1,35 @@
+{
+  "irVersion": "1.0",
+  "project": "heygen-go",
+  "repository": "https://github.com/plexusone/heygen-go",
+  "versioning": "semver",
+  "commitConvention": "conventional",
+  "maintainers": ["johncwang@gmail.com"],
+  "releases": [
+    {
+      "version": "v0.1.0",
+      "date": "2026-07-12",
+      "highlights": [
+        { "description": "Initial release of the HeyGen Go SDK with Avatar and LiveAvatar API support" }
+      ],
+      "added": [
+        { "description": "Core HTTP client with retry logic and exponential backoff", "commit": "62eae3f" },
+        { "description": "Main SDK entry point with `heygen.New()` constructor", "commit": "3367459" },
+        { "description": "Avatar v3 API client: `List`, `Get`, `ListLooks`", "commit": "593b00c" },
+        { "description": "LiveAvatar real-time streaming client: `NewSession`, `StartSession`, `StopSession`", "commit": "071ff4e" },
+        { "description": "LITE mode support for BYO AI stack with LiveKit integration", "commit": "071ff4e" },
+        { "description": "Sandbox mode with `SandboxAvatarID` for testing without credits", "commit": "071ff4e" },
+        { "description": "Typed error handling with `APIError`, `IsUnauthorized`, `IsRateLimited`, `IsNotFound`", "commit": "62eae3f" },
+        { "description": "Environment variable support for API keys (`HEYGEN_API_KEY`, `LIVEAVATAR_API_KEY`)", "commit": "62eae3f" }
+      ],
+      "documentation": [
+        { "description": "README with quick start guide and usage examples", "commit": "93b12f1" },
+        { "description": "MkDocs documentation site with guides and API reference", "commit": "93b12f1" },
+        { "description": "LiveAvatar session example demonstrating full flow", "commit": "16b55e5" }
+      ],
+      "tests": [
+        { "description": "Unit tests for avatar, heygen, and liveavatar packages", "commit": "43d1cfd" }
+      ]
+    }
+  ]
+}
