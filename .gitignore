@@ -1,0 +1,45 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary
+*.test
+
+# Output of go coverage
+*.out
+
+# Go workspace
+go.work
+go.work.sum
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+.envrc
+
+# Ideation/planning chat logs
+IDEATION_CHAT*.md
+
+# Build
+/bin/
+/dist/
+
+# Example binaries (built from examples/)
+list-avatars
+liveavatar-session
+
+# MkDocs generated site
+/site/
