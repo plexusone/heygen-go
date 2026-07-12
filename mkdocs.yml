@@ -1,0 +1,57 @@
+site_name: heygen-go
+site_description: Go SDK for the HeyGen API
+site_url: https://plexusone.github.io/heygen-go
+repo_url: https://github.com/plexusone/heygen-go
+repo_name: plexusone/heygen-go
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.expand
+    - content.code.copy
+    - content.code.annotate
+
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - Guides:
+    - Avatars: guides/avatars.md
+    - LiveAvatar Streaming: guides/liveavatar.md
+  - API Reference:
+    - Overview: api/overview.md
+    - Avatar: api/avatar.md
+    - LiveAvatar: api/liveavatar.md
+  - Examples: examples.md
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition
+  - pymdownx.details
+  - tables
+  - toc:
+      permalink: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/plexusone/heygen-go
