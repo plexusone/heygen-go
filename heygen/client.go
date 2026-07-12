@@ -101,7 +101,7 @@ func (c *Client) do(ctx context.Context, req *http.Request) (*http.Response, err
 func (c *Client) calculateBackoff(attempt int) time.Duration {
 	delay := float64(c.config.Retry.BaseDelay) * math.Pow(2, float64(attempt-1))
 	// Add jitter: multiply by random factor between 0.75 and 1.25
-	jitter := 0.75 + rand.Float64()*0.5
+	jitter := 0.75 + rand.Float64()*0.5 //nolint:gosec // G404: weak random is fine for jitter
 	delay *= jitter
 
 	if delay > float64(c.config.Retry.MaxDelay) {

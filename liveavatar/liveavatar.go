@@ -22,7 +22,7 @@ const (
 	DefaultBaseURL = "https://api.liveavatar.com"
 
 	// EnvAPIKey is the environment variable for the LiveAvatar API key.
-	EnvAPIKey = "LIVEAVATAR_API_KEY"
+	EnvAPIKey = "LIVEAVATAR_API_KEY" //nolint:gosec // G101: not a credential, just env var name
 
 	// DefaultTimeout is the default HTTP client timeout.
 	DefaultTimeout = 30 * time.Second

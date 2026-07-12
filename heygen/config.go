@@ -20,12 +20,12 @@ const (
 	DefaultTimeout = 30 * time.Second
 
 	// EnvAPIKey is the environment variable for the HeyGen API key.
-	EnvAPIKey = "HEYGEN_API_KEY"
+	EnvAPIKey = "HEYGEN_API_KEY" //nolint:gosec // G101: not a credential, just env var name
 
 	// EnvLiveAvatarAPIKey is the environment variable for the LiveAvatar API key.
 	// Note: LiveAvatar and HeyGen use DIFFERENT API keys.
 	// Get your LiveAvatar key from: app.liveavatar.com/developers
-	EnvLiveAvatarAPIKey = "LIVEAVATAR_API_KEY"
+	EnvLiveAvatarAPIKey = "LIVEAVATAR_API_KEY" //nolint:gosec // G101: not a credential, just env var name
 )
 
 // Config holds configuration for the HeyGen client.
