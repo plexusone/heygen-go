@@ -38,6 +38,8 @@ nav:
     - Avatar: api/avatar.md
     - LiveAvatar: api/liveavatar.md
   - Examples: examples.md
+  - Releases:
+    - v0.1.0: releases/v0.1.0.md
 
 markdown_extensions:
   - pymdownx.highlight:
