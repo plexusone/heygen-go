@@ -4,7 +4,7 @@
 
 | Version | Status | Description |
 |---------|--------|-------------|
-| v0.1.0 | Planned | Initial release with core SDK |
+| v0.1.0 | In Progress | Initial release with core SDK |
 | v0.2.0 | Planned | Extended API coverage |
 | v0.3.0 | Planned | Production hardening |
 
@@ -17,29 +17,34 @@
 ### Features
 
 - [x] Project setup and documentation
-- [ ] OpenAPI code generation
-- [ ] Core HTTP client with authentication
-- [ ] Avatar API (list, get)
-- [ ] Voice API (list, get)
-- [ ] LiveAvatar session management
-- [ ] WebSocket streaming client
-- [ ] Audio frame handling
-- [ ] Event callbacks
-- [ ] Basic examples
-- [ ] README documentation
+- [x] Core HTTP client with authentication
+- [x] Retry logic with exponential backoff
+- [x] Error types with status codes and request IDs
+- [x] Avatar API v3 (list, get, list looks)
+- [x] LiveAvatar session management (LITE mode)
+- [x] Basic examples (list-avatars, liveavatar-session)
+- [x] README documentation
+- [x] MkDocs documentation site
+
+### Remaining for v0.1.0
+
+- [ ] **Unit tests for avatar package**
+- [ ] **Unit tests for liveavatar package**
+- [ ] **Unit tests for heygen core package**
+- [ ] Push to GitHub
+- [ ] CI/CD with GitHub Actions (build, lint, test)
+- [ ] Voice API (list, get) - currently placeholder
+- [ ] WebSocket streaming client for LiveAvatar audio
 
 ### API Coverage
 
 | API | Endpoints | Status |
 |-----|-----------|--------|
-| Avatars | `avatar.list`, `avatar.get` | Planned |
-| Voices | `voice.list`, `voice.get` | Planned |
-| LiveAvatar | `streaming.new`, `streaming.start`, `streaming.stop` | Planned |
-| WebSocket | Audio streaming, events | Planned |
-
-### Integration
-
-- [ ] omni-livekit HeyGen provider (separate PR in omni-livekit)
+| Avatars | `/v3/avatars`, `/v3/avatars/{id}`, `/v3/avatars/{id}/looks` | ✅ Implemented |
+| LiveAvatar | `/v1/sessions/token`, `/v1/sessions/start`, `/v1/sessions/stop` | ✅ Implemented |
+| Voices | `/v2/voices` | Placeholder |
+| Videos | `/v2/video/generate` | Placeholder |
+| Streaming | Legacy `/v1/streaming.*` | Placeholder (deprecated) |
 
 ---
 
@@ -51,6 +56,7 @@
 
 - [ ] Video generation API
 - [ ] Video status polling
+- [ ] Voice listing API
 - [ ] Template API
 - [ ] Webhook handling
 - [ ] Batch video generation
@@ -60,7 +66,8 @@
 
 | API | Endpoints | Status |
 |-----|-----------|--------|
-| Videos | `video.generate`, `video_status.get` | Planned |
+| Videos | `video.generate`, `video_status.get`, `video.list`, `video.delete` | Planned |
+| Voices | `voice.list` | Planned |
 | Templates | `template.list`, `template.get` | Planned |
 | Webhooks | Callback handling | Planned |
 
@@ -73,8 +80,7 @@
 ### Features
 
 - [ ] Comprehensive error handling
-- [ ] Retry with exponential backoff
-- [ ] Rate limit handling
+- [ ] Rate limit handling with backoff
 - [ ] Connection pooling
 - [ ] Metrics and observability
 - [ ] Context propagation
@@ -89,6 +95,31 @@
 
 ---
 
+## omni-livekit Integration
+
+### Panel Discussion Agent
+
+**Location:** `cmd/livekit-agent-panel/` in omni-livekit
+
+| Task | Description | Status |
+|------|-------------|--------|
+| Coordinator | Turn-taking logic for multiple panelists | Planned |
+| Panelist | Individual agent with personality/voice | Planned |
+| Transcript | Shared conversation context | Planned |
+| LiveAvatar Integration | Avatar rendering for panelists | Planned |
+
+### Provider Milestones
+
+| Milestone | Description | Status |
+|-----------|-------------|--------|
+| LiveAvatar Provider | HeyGen LiveAvatar in LiveKit rooms | Planned |
+| Audio Routing | Agent TTS → LiveAvatar → LiveKit | Planned |
+| Event Sync | Coordinate speaking events | Planned |
+| Fallback | Static image when LiveAvatar unavailable | Planned |
+| Multi-Avatar | Multiple avatars in panel discussions | Planned |
+
+---
+
 ## Future Considerations
 
 ### Potential v0.4.0+ Features
@@ -100,16 +131,6 @@
 | Photo Avatar | Generate avatars from photos | Low |
 | Video Translation | Translate existing videos | Low |
 | Interactive Avatar | Two-way conversations | Medium |
-
-### omni-livekit Integration Milestones
-
-| Milestone | Description |
-|-----------|-------------|
-| Provider MVP | Basic HeyGen avatar in LiveKit rooms |
-| Audio Routing | Agent TTS → HeyGen → LiveKit |
-| Event Sync | Coordinate speaking events |
-| Fallback | Static image when HeyGen unavailable |
-| Multi-Avatar | Multiple HeyGen avatars in panel discussions |
 
 ### Abstraction Layer
 
@@ -137,28 +158,28 @@ Implementations:
 
 ## Dependencies Tracking
 
-| Dependency | Current | Latest | Notes |
-|------------|---------|--------|-------|
-| ogen | - | latest | OpenAPI generation |
-| nhooyr.io/websocket | - | v1.8.x | WebSocket client |
-| omni-livekit | v0.3.0 | v0.3.0 | Avatar provider integration |
+| Dependency | Current | Notes |
+|------------|---------|-------|
+| github.com/livekit/protocol | v1.49.0 | LiveKit token generation |
+| nhooyr.io/websocket | - | WebSocket client (future) |
 
 ---
 
 ## Release Checklist
 
-### Pre-Release
+### Pre-Release (v0.1.0)
 
-- [ ] All planned features implemented
-- [ ] Tests passing
-- [ ] golangci-lint clean
-- [ ] Documentation complete
-- [ ] CHANGELOG.json updated
-- [ ] Examples working
+- [x] Core features implemented
+- [ ] Unit tests passing
+- [x] golangci-lint clean
+- [x] Documentation complete
+- [ ] CHANGELOG.json created
+- [x] Examples working
 
 ### Release
 
-- [ ] Tag version
+- [ ] Push to GitHub
+- [ ] Set up GitHub Actions CI
+- [ ] Tag version v0.1.0
 - [ ] Generate CHANGELOG.md
 - [ ] Create GitHub release
-- [ ] Update omni-livekit dependency
