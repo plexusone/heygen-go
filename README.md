@@ -29,12 +29,12 @@ Go SDK for the [HeyGen API](https://docs.heygen.com/).
 
 ## Features
 
-- **Avatar Management** - List and retrieve avatar details
-- **Voice Management** - List available voices
-- **Video Generation** - Create AI-generated videos
-- **LiveAvatar Streaming** - Real-time avatar streaming sessions
-- **Retry Logic** - Automatic retries with exponential backoff
-- **Error Handling** - Typed errors with request IDs
+- 🎭 **Avatar Management** - List and retrieve avatar details
+- 🎙️ **Voice Management** - List available voices
+- 🎬 **Video Generation** - Create AI-generated videos
+- 📡 **LiveAvatar Streaming** - Real-time avatar streaming sessions
+- 🔄 **Retry Logic** - Automatic retries with exponential backoff
+- ⚠️ **Error Handling** - Typed errors with request IDs
 
 ## Installation
 
