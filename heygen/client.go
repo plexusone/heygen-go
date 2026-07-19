@@ -143,19 +143,35 @@ func (c *Client) isRetryable(method string, statusCode int) bool {
 	return false
 }
 
-// Request executes an API request and decodes the response.
+// Request executes an API request with a JSON body against the
+// configured base URL and decodes the response.
 func (c *Client) Request(ctx context.Context, method, path string, body, result any) error {
-	var bodyReader io.Reader
+	var data []byte
+	contentType := ""
 	if body != nil {
-		data, err := json.Marshal(body)
+		var err error
+		data, err = json.Marshal(body)
 		if err != nil {
 			return fmt.Errorf("marshal request body: %w", err)
 		}
-		bodyReader = bytes.NewReader(data)
+		contentType = "application/json"
 	}
 
-	url := c.config.BaseURL + path
-	req, err := http.NewRequestWithContext(ctx, method, url, bodyReader)
+	return c.RequestURL(ctx, method, c.config.BaseURL+path, contentType, data, result)
+}
+
+// RequestURL executes an API request with a raw body against an absolute
+// URL and decodes the JSON response. It is used for endpoints hosted
+// outside the configured base URL, such as the asset upload service
+// (upload.heygen.com). contentType is set as the Content-Type header
+// when non-empty.
+func (c *Client) RequestURL(ctx context.Context, method, absURL, contentType string, body []byte, result any) error {
+	var bodyReader io.Reader
+	if body != nil {
+		bodyReader = bytes.NewReader(body)
+	}
+
+	req, err := http.NewRequestWithContext(ctx, method, absURL, bodyReader)
 	if err != nil {
 		return fmt.Errorf("create request: %w", err)
 	}
@@ -163,8 +179,8 @@ func (c *Client) Request(ctx context.Context, method, path string, body, result 
 	// Set headers
 	req.Header.Set("X-Api-Key", c.config.APIKey)
 	req.Header.Set("User-Agent", c.config.UserAgent)
-	if body != nil {
-		req.Header.Set("Content-Type", "application/json")
+	if contentType != "" {
+		req.Header.Set("Content-Type", contentType)
 	}
 
 	resp, err := c.do(ctx, req)
