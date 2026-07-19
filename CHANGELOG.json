@@ -7,6 +7,26 @@
   "maintainers": ["johncwang@gmail.com"],
   "releases": [
     {
+      "version": "v0.2.0",
+      "date": "2026-07-16",
+      "highlights": [
+        { "description": "New `asset` package for uploading audio, images, and video to HeyGen's asset service (upload.heygen.com)" }
+      ],
+      "added": [
+        { "description": "`asset.Client` with `Upload` returning a hosted URL usable in other HeyGen APIs (e.g., audio-driven video generation)" },
+        { "description": "`asset.ContentType*` constants for the supported asset types (JPEG, PNG, MP4, WebM, MPEG audio)" },
+        { "description": "`Client.Asset` facade field on the root SDK client" },
+        { "description": "`heygen.Client.RequestURL` for raw-body requests against absolute URLs (endpoints hosted outside the API base URL)" },
+        { "description": "Unit tests for asset upload and retry body handling" }
+      ],
+      "fixed": [
+        { "description": "Retries now rewind the request body via `GetBody`, so a 429-retried POST resends the full payload instead of an empty body" }
+      ],
+      "documentation": [
+        { "description": "README: asset upload feature, usage example, and API coverage row" }
+      ]
+    },
+    {
       "version": "v0.1.0",
       "date": "2026-07-12",
       "highlights": [
