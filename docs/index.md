@@ -5,6 +5,8 @@ Go SDK for the [HeyGen API](https://docs.heygen.com/) and [LiveAvatar API](https
 ## Features
 
 - **Avatar Management** - List and retrieve avatar details (v3 API)
+- **Video Generation** - Create AI-generated avatar videos (v2 API)
+- **Asset Upload** - Upload audio, images, and video for use in other APIs
 - **LiveAvatar Streaming** - Real-time avatar sessions with LiveKit integration
 - **Retry Logic** - Automatic retries with exponential backoff
 - **Error Handling** - Typed errors with request IDs

@@ -32,6 +32,7 @@ Go SDK for the [HeyGen API](https://docs.heygen.com/).
 - 🎭 **Avatar Management** - List and retrieve avatar details
 - 🎙️ **Voice Management** - List available voices
 - 🎬 **Video Generation** - Create AI-generated videos
+- 📤 **Asset Upload** - Upload audio, images, and video for use in other APIs
 - 📡 **LiveAvatar Streaming** - Real-time avatar streaming sessions
 - 🔄 **Retry Logic** - Automatic retries with exponential backoff
 - ⚠️ **Error Handling** - Typed errors with request IDs
@@ -159,6 +160,40 @@ for {
 }
 ```
 
+### Upload Assets
+
+Upload audio, images, or video to HeyGen's asset service (upload.heygen.com)
+and use the hosted URL in other APIs — for example, driving avatar lip-sync
+from your own narration audio:
+
+```go
+import "github.com/plexusone/heygen-go/asset"
+
+f, err := os.Open("narration.mp3")
+if err != nil {
+    log.Fatal(err)
+}
+defer f.Close()
+
+uploaded, err := client.Asset.Upload(ctx, asset.ContentTypeMPEG, f)
+if err != nil {
+    log.Fatal(err)
+}
+
+// Use the hosted URL as the audio source for video generation
+videoID, err := client.Video.Generate(ctx, video.GenerateRequest{
+    VideoInputs: []video.VideoInput{
+        {
+            Character: video.Character{Type: "avatar", AvatarID: "avatar_id"},
+            Voice:     video.VoiceInput{Type: "audio", AudioURL: uploaded.URL},
+        },
+    },
+})
+```
+
+Supported content types: `asset.ContentTypeJPEG`, `ContentTypePNG`,
+`ContentTypeMP4`, `ContentTypeWebM`, `ContentTypeMPEG` (MP3 audio).
+
 ### LiveAvatar Streaming (LITE Mode)
 
 LiveAvatar provides real-time avatar streaming. Use LITE mode for BYO AI stack
@@ -270,6 +305,7 @@ if err != nil {
 | Avatars | `v3/avatars`, `v3/avatars/{id}`, `v3/avatars/{id}/looks` | Implemented |
 | Voices | `v2/voices` | Planned |
 | Videos | `v2/video/generate` | Planned |
+| Assets | `v1/asset` (upload.heygen.com) | Implemented |
 | LiveAvatar | `v1/sessions/token`, `v1/sessions/start`, `v1/sessions/stop` | Implemented |
 
 ## Related Projects

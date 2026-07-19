@@ -36,9 +36,11 @@ nav:
   - API Reference:
     - Overview: api/overview.md
     - Avatar: api/avatar.md
+    - Asset: api/asset.md
     - LiveAvatar: api/liveavatar.md
   - Examples: examples.md
   - Releases:
+    - v0.2.0: releases/v0.2.0.md
     - v0.1.0: releases/v0.1.0.md
 
 markdown_extensions:

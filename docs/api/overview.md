@@ -8,6 +8,7 @@ This section provides detailed API documentation for all heygen-go packages.
 |---------|-------------|
 | [`heygen`](https://pkg.go.dev/github.com/plexusone/heygen-go) | Main client and configuration |
 | [`avatar`](avatar.md) | Avatar listing and details (v3 API) |
+| [`asset`](asset.md) | Asset upload (audio, images, video) |
 | [`liveavatar`](liveavatar.md) | Real-time streaming sessions |
 
 ## Client Architecture
@@ -18,7 +19,8 @@ import heygen "github.com/plexusone/heygen-go"
 client, err := heygen.New("api-key")
 // client.Avatar  → avatar.Client
 // client.Voice   → voice.Client (planned)
-// client.Video   → video.Client (planned)
+// client.Video   → video.Client
+// client.Asset   → asset.Client
 ```
 
 ## Configuration Options
