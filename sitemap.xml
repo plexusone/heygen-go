@@ -2,54 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://plexusone.github.io/heygen-go/</loc>
-         <lastmod>2026-07-12</lastmod>
+         <lastmod>2026-07-19</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/heygen-go/examples/</loc>
-         <lastmod>2026-07-12</lastmod>
+         <lastmod>2026-07-19</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/heygen-go/getting-started/</loc>
-         <lastmod>2026-07-12</lastmod>
+         <lastmod>2026-07-19</lastmod>
+    </url>
+    <url>
+         <loc>https://plexusone.github.io/heygen-go/api/asset/</loc>
+         <lastmod>2026-07-19</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/heygen-go/api/avatar/</loc>
-         <lastmod>2026-07-12</lastmod>
+         <lastmod>2026-07-19</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/heygen-go/api/liveavatar/</loc>
-         <lastmod>2026-07-12</lastmod>
+         <lastmod>2026-07-19</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/heygen-go/api/overview/</loc>
-         <lastmod>2026-07-12</lastmod>
+         <lastmod>2026-07-19</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/heygen-go/guides/avatars/</loc>
-         <lastmod>2026-07-12</lastmod>
+         <lastmod>2026-07-19</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/heygen-go/guides/liveavatar/</loc>
-         <lastmod>2026-07-12</lastmod>
+         <lastmod>2026-07-19</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/heygen-go/releases/v0.1.0/</loc>
-         <lastmod>2026-07-12</lastmod>
+         <lastmod>2026-07-19</lastmod>
+    </url>
+    <url>
+         <loc>https://plexusone.github.io/heygen-go/releases/v0.2.0/</loc>
+         <lastmod>2026-07-19</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/heygen-go/specs/PLAN/</loc>
-         <lastmod>2026-07-12</lastmod>
+         <lastmod>2026-07-19</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/heygen-go/specs/PRD/</loc>
-         <lastmod>2026-07-12</lastmod>
+         <lastmod>2026-07-19</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/heygen-go/specs/ROADMAP/</loc>
-         <lastmod>2026-07-12</lastmod>
+         <lastmod>2026-07-19</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/heygen-go/specs/TRD/</loc>
-         <lastmod>2026-07-12</lastmod>
+         <lastmod>2026-07-19</lastmod>
     </url>
 </urlset>
