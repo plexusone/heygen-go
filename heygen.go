@@ -41,9 +41,15 @@
 //		Quality:  streaming.QualityHigh,
 //		AvatarID: "avatar_id",
 //	})
+//
+// Upload an asset (audio, image, video) for use in other APIs:
+//
+//	uploaded, err := client.Asset.Upload(ctx, asset.ContentTypeMPEG, audioFile)
+//	// uploaded.URL is usable as video.VoiceInput{Type: "audio", AudioURL: ...}
 package heygen
 
 import (
+	"github.com/plexusone/heygen-go/asset"
 	"github.com/plexusone/heygen-go/avatar"
 	"github.com/plexusone/heygen-go/heygen"
 	"github.com/plexusone/heygen-go/streaming"
@@ -64,6 +70,9 @@ type Client struct {
 
 	// Streaming provides access to streaming (LiveAvatar) APIs.
 	Streaming *streaming.Client
+
+	// Asset provides access to the asset upload API.
+	Asset *asset.Client
 
 	// core is the underlying HTTP client.
 	core *heygen.Client
@@ -89,6 +98,7 @@ func New(apiKey string, opts ...Option) (*Client, error) {
 		Voice:     voice.NewClient(core),
 		Video:     video.NewClient(core),
 		Streaming: streaming.NewClient(core),
+		Asset:     asset.NewClient(core),
 		core:      core,
 	}, nil
 }
