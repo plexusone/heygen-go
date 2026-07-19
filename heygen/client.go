@@ -58,7 +58,16 @@ func (c *Client) do(ctx context.Context, req *http.Request) (*http.Response, err
 			}
 		}
 
-		resp, err := c.httpClient.Do(req.Clone(ctx))
+		attemptReq := req.Clone(ctx)
+		if attempt > 0 && req.GetBody != nil {
+			body, err := req.GetBody()
+			if err != nil {
+				return nil, fmt.Errorf("rewind request body for retry: %w", err)
+			}
+			attemptReq.Body = body
+		}
+
+		resp, err := c.httpClient.Do(attemptReq)
 		if err != nil {
 			lastErr = err
 			if c.isRetryable(req.Method, 0) {
