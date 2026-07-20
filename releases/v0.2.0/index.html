@@ -786,6 +786,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependencies
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#documentation" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -900,6 +911,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependencies
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#documentation" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -931,28 +953,36 @@
 
 
 <h1 id="v020">v0.2.0<a class="headerlink" href="#v020" title="Permanent link">&para;</a></h1>
-<p><strong>Release Date:</strong> 2026-07-16</p>
-<p>Adds asset upload support, enabling audio-driven avatar video generation from locally produced narration files.</p>
+<p><strong>Release Date:</strong> 2026-07-19</p>
+<p>Adds asset upload, v2 avatar discovery, a public-avatar catalog, and an OmniAvatar render adapter — together enabling audio-driven avatar video generation behind the provider-agnostic OmniAvatar interfaces.</p>
 <h2 id="highlights">Highlights<a class="headerlink" href="#highlights" title="Permanent link">&para;</a></h2>
 <ul>
 <li>New <code>asset</code> package for uploading audio, images, and video to HeyGen's asset service (<code>upload.heygen.com</code>, a separate host from the main API)</li>
+<li><code>avatar.ListV2</code>/<code>SearchV2</code> return <strong>generation-ready</strong> v2 avatar IDs, plus a static public-avatar catalog</li>
+<li>New <code>omniavatar</code> subpackage — an OmniAvatar <strong>render</strong> adapter on top of this SDK</li>
 </ul>
 <h2 id="added">Added<a class="headerlink" href="#added" title="Permanent link">&para;</a></h2>
 <ul>
-<li><code>asset.Client</code> with <code>Upload(ctx, contentType, reader)</code> returning a hosted <code>Asset</code> whose URL is usable in other HeyGen APIs — for example as <code>video.VoiceInput{Type: "audio", AudioURL: ...}</code> for audio-driven video generation</li>
-<li><code>asset.ContentType*</code> constants for the supported asset types: JPEG, PNG, MP4, WebM, MPEG audio (MP3)</li>
-<li><code>asset.WithBaseURL</code> option for overriding the upload service URL (testing, proxies)</li>
-<li><code>Client.Asset</code> facade field on the root SDK client</li>
+<li><code>asset.Client</code> with <code>Upload(ctx, contentType, reader)</code> returning a hosted <code>Asset</code> whose URL is usable in other HeyGen APIs — for example as <code>video.VoiceInput{Type: "audio", AudioURL: ...}</code> for audio-driven video generation. Includes <code>asset.ContentType*</code> constants (JPEG, PNG, MP4, WebM, MPEG audio), <code>asset.WithBaseURL</code>, and the <code>Client.Asset</code> facade field</li>
 <li><code>heygen.Client.RequestURL</code> for raw-body requests against absolute URLs, used by endpoints hosted outside the configured API base URL</li>
-<li>Unit tests covering asset upload (headers, body, error envelope) and retry body handling</li>
+<li><code>avatar.ListV2</code> and <code>avatar.SearchV2</code> for the v2 avatars API, returning IDs directly usable as <code>avatar_id</code> in generation (unlike the v3 avatar-group IDs, which the generation endpoint rejects)</li>
+<li><code>liveavatar</code> public avatar catalog: <code>PublicAvatars</code> (26 avatars), <code>GetAvatarByID</code>/<code>GetAvatarByName</code>, gender/type filters, avatar constants, and panel presets</li>
+<li><code>omniavatar</code> subpackage: an OmniAvatar render adapter implementing the omniavatar-core render interfaces (<code>render.Provider</code>, <code>render.AudioUploader</code> via the asset API, <code>render.AvatarLister</code> via v2 avatars) on top of this SDK. It depends only on <code>omniavatar-core</code>, keeping HeyGen-specific render knowledge in this repo. The real-time (live) LiveAvatar adapter, which needs LiveKit, lives in the batteries-included <a href="https://github.com/plexusone/omniavatar"><code>omniavatar</code></a> package</li>
+<li>Unit tests for asset upload (headers, body, error envelope), <code>RequestURL</code>, retry body rewind, and v2 avatars</li>
 </ul>
 <h2 id="fixed">Fixed<a class="headerlink" href="#fixed" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Retries now rewind the request body via <code>GetBody</code>, so a 429-retried POST resends the full payload instead of an empty body. Previously a rate-limited JSON POST (or asset upload) would silently retry with an empty body.</li>
 </ul>
+<h2 id="dependencies">Dependencies<a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Require <code>omniavatar-core</code> v0.3.0 (interfaces + render helpers) for the render adapter</li>
+<li>Bump <code>github.com/livekit/protocol</code> to v1.50.0</li>
+</ul>
 <h2 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">&para;</a></h2>
 <ul>
-<li>README: asset upload feature bullet, usage example (upload → audio-driven video generation), and API coverage row</li>
+<li>README: asset upload feature and usage, API coverage row, and an OmniAvatar Integration section</li>
+<li>MkDocs site: Asset API page and the shared PlexusOne theme</li>
 </ul>
 <hr />
 <p><a href="https://github.com/plexusone/heygen-go/blob/main/CHANGELOG.md">Full Changelog</a> | <a href="https://github.com/plexusone/heygen-go/compare/v0.1.0...v0.2.0">Compare</a></p>
