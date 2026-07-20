@@ -2,7 +2,7 @@ module github.com/plexusone/heygen-go
 
 go 1.26.4
 
-require github.com/livekit/protocol v1.50.0
+require github.com/livekit/protocol v1.50.1
 
 require (
 	buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.36.11-20260709200747-435963d16310.1 // indirect
