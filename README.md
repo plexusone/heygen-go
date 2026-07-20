@@ -308,6 +308,29 @@ if err != nil {
 | Assets | `v1/asset` (upload.heygen.com) | Implemented |
 | LiveAvatar | `v1/sessions/token`, `v1/sessions/start`, `v1/sessions/stop` | Implemented |
 
+## OmniAvatar Integration
+
+The [`omniavatar`](omniavatar/) subpackage implements the provider-agnostic
+[OmniAvatar](https://github.com/plexusone/omniavatar) **render** interfaces
+(`render.Provider`, `render.AudioUploader`, `render.AvatarLister`) on top of
+this SDK, so HeyGen video generation can be used behind the OmniAvatar
+abstraction. It depends only on
+[`omniavatar-core`](https://github.com/plexusone/omniavatar-core) (interfaces
+only — no LiveKit).
+
+```go
+import heygenomni "github.com/plexusone/heygen-go/omniavatar"
+
+p, err := heygenomni.NewRenderProvider(heygenomni.RenderConfig{
+    APIKey: os.Getenv("HEYGEN_API_KEY"),
+})
+```
+
+Provider adapters live in the provider SDK repos so all HeyGen-specific
+knowledge stays here. The real-time **live** (LiveAvatar) adapter, which
+requires LiveKit, lives in the batteries-included
+[`omniavatar`](https://github.com/plexusone/omniavatar) package instead.
+
 ## Related Projects
 
 - [omni-livekit](https://github.com/plexusone/omni-livekit) - LiveKit voice agents with avatar support
