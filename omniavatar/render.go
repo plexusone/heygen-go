@@ -7,13 +7,12 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/plexusone/omniavatar-core/render"
+
 	heygenasset "github.com/plexusone/heygen-go/asset"
 	heygenavatar "github.com/plexusone/heygen-go/avatar"
 	heygensdk "github.com/plexusone/heygen-go/heygen"
 	heygenvideo "github.com/plexusone/heygen-go/video"
-
-	"github.com/plexusone/omniavatar-core/render"
-
 )
 
 // RenderConfig configures the HeyGen render (batch video generation) provider.
