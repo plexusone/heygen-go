@@ -16,7 +16,7 @@
         <link rel="prev" href="../asset/">
       
       
-        <link rel="next" href="../../examples/">
+        <link rel="next" href="../omniavatar/">
       
       
         
@@ -836,10 +836,49 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#public-avatar-catalog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Public Avatar Catalog
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../omniavatar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OmniAvatar
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1222,6 +1261,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#public-avatar-catalog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Public Avatar Catalog
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1457,6 +1507,27 @@
 </tr>
 </tbody>
 </table>
+<h2 id="public-avatar-catalog">Public Avatar Catalog<a class="headerlink" href="#public-avatar-catalog" title="Permanent link">&para;</a></h2>
+<p>The <code>liveavatar</code> package ships a static catalog of HeyGen public avatars,
+so you can look them up without an API call.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kn">import</span><span class="w"> </span><span class="s">&quot;github.com/plexusone/heygen-go/liveavatar&quot;</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="c1">// All 26 public + photo avatars</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">liveavatar</span><span class="p">.</span><span class="nx">PublicAvatars</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">ID</span><span class="p">,</span><span class="w"> </span><span class="nx">a</span><span class="p">.</span><span class="nx">Name</span><span class="p">)</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="p">}</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="c1">// Lookups and filters</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="nx">josh</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">liveavatar</span><span class="p">.</span><span class="nx">GetAvatarByID</span><span class="p">(</span><span class="nx">liveavatar</span><span class="p">.</span><span class="nx">AvatarJoshua</span><span class="p">)</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="nx">byName</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">liveavatar</span><span class="p">.</span><span class="nx">GetAvatarByName</span><span class="p">(</span><span class="s">&quot;Joshua&quot;</span><span class="p">)</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="nx">women</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">liveavatar</span><span class="p">.</span><span class="nx">GetAvatarsByGender</span><span class="p">(</span><span class="s">&quot;female&quot;</span><span class="p">)</span>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="nx">photos</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">liveavatar</span><span class="p">.</span><span class="nx">GetAvatarsByType</span><span class="p">(</span><span class="s">&quot;photo&quot;</span><span class="p">)</span>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="c1">// Recommended avatars for AI panel discussions</span>
+<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a><span class="nx">panel</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">liveavatar</span><span class="p">.</span><span class="nx">PanelPresets</span>
+</code></pre></div>
+<p>Avatar constants (e.g. <code>liveavatar.AvatarJoshua</code>) are provided for common
+avatars.</p>
 
 
 

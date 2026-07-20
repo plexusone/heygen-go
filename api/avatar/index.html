@@ -702,6 +702,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#v2-avatars-generation-ready-ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v2 Avatars (generation-ready IDs)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v2 Avatars (generation-ready IDs)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v2avatar-talkingphoto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V2Avatar / TalkingPhoto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listv2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ListV2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#searchv2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SearchV2
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -754,6 +804,34 @@
     
   
     LiveAvatar
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../omniavatar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OmniAvatar
   
 
     
@@ -1066,6 +1144,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#v2-avatars-generation-ready-ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v2 Avatars (generation-ready IDs)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v2 Avatars (generation-ready IDs)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v2avatar-talkingphoto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V2Avatar / TalkingPhoto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listv2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ListV2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#searchv2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SearchV2
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1264,6 +1392,49 @@
 </ul>
 <p><strong>Example:</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nx">looks</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">Avatar</span><span class="p">.</span><span class="nx">ListLooks</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;e0e84faea390465896db75a83be45085&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="v2-avatars-generation-ready-ids">v2 Avatars (generation-ready IDs)<a class="headerlink" href="#v2-avatars-generation-ready-ids" title="Permanent link">&para;</a></h2>
+<p>The <code>List</code>/<code>Get</code>/<code>ListLooks</code> methods above use the <strong>v3</strong> avatars API, which
+returns avatar <em>groups</em>. The <strong>v2</strong> avatars API returns individual avatars
+whose IDs are directly usable as <code>avatar_id</code> in video generation.</p>
+<div class="admonition warning">
+<p class="admonition-title">Use v2 IDs for generation</p>
+<p>A v3 avatar-group ID (e.g. <code>9fc2a78e642547b5a21ea8cf06a953d4</code>) is
+<strong>rejected</strong> by the video-generation endpoint (<code>avatar look not found</code>).
+Use a v2 avatar ID (e.g. <code>Abigail_expressive_2024112501</code>) from <code>ListV2</code>
+or <code>SearchV2</code>.</p>
+</div>
+<h3 id="v2avatar-talkingphoto">V2Avatar / TalkingPhoto<a class="headerlink" href="#v2avatar-talkingphoto" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kd">type</span><span class="w"> </span><span class="nx">V2Avatar</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="nx">AvatarID</span><span class="w">        </span><span class="kt">string</span><span class="w"> </span><span class="c1">// use as avatar_id in generation</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span><span class="nx">AvatarName</span><span class="w">      </span><span class="kt">string</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">    </span><span class="nx">Gender</span><span class="w">          </span><span class="kt">string</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">    </span><span class="nx">PreviewImageURL</span><span class="w"> </span><span class="kt">string</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">    </span><span class="nx">PreviewVideoURL</span><span class="w"> </span><span class="kt">string</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="p">}</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="kd">type</span><span class="w"> </span><span class="nx">TalkingPhoto</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="w">    </span><span class="nx">TalkingPhotoID</span><span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="c1">// use as talking_photo_id in generation</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">    </span><span class="nx">TalkingPhotoName</span><span class="w"> </span><span class="kt">string</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="w">    </span><span class="nx">PreviewImageURL</span><span class="w"> </span><span class="kt">string</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="listv2">ListV2<a class="headerlink" href="#listv2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">Client</span><span class="p">)</span><span class="w"> </span><span class="nx">ListV2</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">V2ListResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span>
+</code></pre></div>
+<p>Returns avatars and talking photos from the v2 avatars API. This endpoint
+returns the full catalog (often 1000+ avatars) in one response and can be
+slow, so configure the client with a generous timeout.</p>
+<h3 id="searchv2">SearchV2<a class="headerlink" href="#searchv2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">Client</span><span class="p">)</span><span class="w"> </span><span class="nx">SearchV2</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">term</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">([]</span><span class="nx">V2Avatar</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span>
+</code></pre></div>
+<p>Filters the v2 catalog by ID or name (case-insensitive substring; an empty
+term returns all).</p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nx">avatars</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">Avatar</span><span class="p">.</span><span class="nx">SearchV2</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;abigail&quot;</span><span class="p">)</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">avatars</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%s  %s (%s)\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">a</span><span class="p">.</span><span class="nx">AvatarID</span><span class="p">,</span><span class="w"> </span><span class="nx">a</span><span class="p">.</span><span class="nx">AvatarName</span><span class="p">,</span><span class="w"> </span><span class="nx">a</span><span class="p">.</span><span class="nx">Gender</span><span class="p">)</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="p">}</span>
 </code></pre></div>
 
 
