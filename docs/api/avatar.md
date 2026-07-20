@@ -164,3 +164,61 @@ func (c *Client) ListLooks(ctx context.Context, groupID string, limit int) (*Loo
 ```go
 looks, err := client.Avatar.ListLooks(ctx, "e0e84faea390465896db75a83be45085", 50)
 ```
+
+## v2 Avatars (generation-ready IDs)
+
+The `List`/`Get`/`ListLooks` methods above use the **v3** avatars API, which
+returns avatar *groups*. The **v2** avatars API returns individual avatars
+whose IDs are directly usable as `avatar_id` in video generation.
+
+!!! warning "Use v2 IDs for generation"
+    A v3 avatar-group ID (e.g. `9fc2a78e642547b5a21ea8cf06a953d4`) is
+    **rejected** by the video-generation endpoint (`avatar look not found`).
+    Use a v2 avatar ID (e.g. `Abigail_expressive_2024112501`) from `ListV2`
+    or `SearchV2`.
+
+### V2Avatar / TalkingPhoto
+
+```go
+type V2Avatar struct {
+    AvatarID        string // use as avatar_id in generation
+    AvatarName      string
+    Gender          string
+    PreviewImageURL string
+    PreviewVideoURL string
+}
+
+type TalkingPhoto struct {
+    TalkingPhotoID  string // use as talking_photo_id in generation
+    TalkingPhotoName string
+    PreviewImageURL string
+}
+```
+
+### ListV2
+
+```go
+func (c *Client) ListV2(ctx context.Context) (*V2ListResponse, error)
+```
+
+Returns avatars and talking photos from the v2 avatars API. This endpoint
+returns the full catalog (often 1000+ avatars) in one response and can be
+slow, so configure the client with a generous timeout.
+
+### SearchV2
+
+```go
+func (c *Client) SearchV2(ctx context.Context, term string) ([]V2Avatar, error)
+```
+
+Filters the v2 catalog by ID or name (case-insensitive substring; an empty
+term returns all).
+
+**Example:**
+
+```go
+avatars, err := client.Avatar.SearchV2(ctx, "abigail")
+for _, a := range avatars {
+    fmt.Printf("%s  %s (%s)\n", a.AvatarID, a.AvatarName, a.Gender)
+}
+```

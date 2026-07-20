@@ -207,3 +207,29 @@ err := client.StopSession(ctx, sessionID, sessionToken, liveavatar.StopReasonUse
 | 1000 | Success |
 | 4000 | Validation error (check request format) |
 | 4010 | Invalid credentials (check API key) |
+
+## Public Avatar Catalog
+
+The `liveavatar` package ships a static catalog of HeyGen public avatars,
+so you can look them up without an API call.
+
+```go
+import "github.com/plexusone/heygen-go/liveavatar"
+
+// All 26 public + photo avatars
+for _, a := range liveavatar.PublicAvatars {
+    fmt.Println(a.ID, a.Name)
+}
+
+// Lookups and filters
+josh, ok := liveavatar.GetAvatarByID(liveavatar.AvatarJoshua)
+byName, ok := liveavatar.GetAvatarByName("Joshua")
+women := liveavatar.GetAvatarsByGender("female")
+photos := liveavatar.GetAvatarsByType("photo")
+
+// Recommended avatars for AI panel discussions
+panel := liveavatar.PanelPresets
+```
+
+Avatar constants (e.g. `liveavatar.AvatarJoshua`) are provided for common
+avatars.

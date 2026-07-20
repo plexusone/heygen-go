@@ -54,6 +54,7 @@ nav:
     - Avatar: api/avatar.md
     - Asset: api/asset.md
     - LiveAvatar: api/liveavatar.md
+    - OmniAvatar: api/omniavatar.md
   - Examples: examples.md
   - Releases:
     - v0.2.0: releases/v0.2.0.md

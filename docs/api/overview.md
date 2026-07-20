@@ -7,9 +7,10 @@ This section provides detailed API documentation for all heygen-go packages.
 | Package | Description |
 |---------|-------------|
 | [`heygen`](https://pkg.go.dev/github.com/plexusone/heygen-go) | Main client and configuration |
-| [`avatar`](avatar.md) | Avatar listing and details (v3 API) |
+| [`avatar`](avatar.md) | Avatar listing and details (v3 groups + v2 generation-ready IDs) |
 | [`asset`](asset.md) | Asset upload (audio, images, video) |
-| [`liveavatar`](liveavatar.md) | Real-time streaming sessions |
+| [`liveavatar`](liveavatar.md) | Real-time streaming sessions + public avatar catalog |
+| [`omniavatar`](omniavatar.md) | OmniAvatar render adapter |
 
 ## Client Architecture
 
