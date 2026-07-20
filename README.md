@@ -302,7 +302,7 @@ if err != nil {
 
 | API | Endpoints | Status |
 |-----|-----------|--------|
-| Avatars | `v3/avatars`, `v3/avatars/{id}`, `v3/avatars/{id}/looks` | Implemented |
+| Avatars | `v3/avatars`, `v3/avatars/{id}`, `v3/avatars/{id}/looks`, `v2/avatars` | Implemented |
 | Voices | `v2/voices` | Planned |
 | Videos | `v2/video/generate` | Planned |
 | Assets | `v1/asset` (upload.heygen.com) | Implemented |

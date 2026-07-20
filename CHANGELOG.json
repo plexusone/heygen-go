@@ -17,6 +17,7 @@
         { "description": "`asset.ContentType*` constants for the supported asset types (JPEG, PNG, MP4, WebM, MPEG audio)", "commit": "875ba80" },
         { "description": "`Client.Asset` facade field on the root SDK client", "commit": "875ba80" },
         { "description": "`heygen.Client.RequestURL` for raw-body requests against absolute URLs (endpoints hosted outside the API base URL)", "commit": "5d45e9e" },
+        { "description": "`avatar.ListV2` and `avatar.SearchV2` for the v2 avatars API, returning IDs directly usable as avatar_id in generation (unlike the v3 avatar-group IDs)", "commit": "991df25" },
         { "description": "Unit tests for the asset upload client", "commit": "875ba80" },
         { "description": "Unit tests for `RequestURL` and retry body rewind", "commit": "5d45e9e" }
       ],
