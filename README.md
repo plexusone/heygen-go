@@ -29,11 +29,12 @@ Go SDK for the [HeyGen API](https://docs.heygen.com/).
 
 ## Features
 
-- 🎭 **Avatar Management** - List and retrieve avatar details
+- 🎭 **Avatar Management** - List avatars (v3 groups and generation-ready v2 IDs) and a built-in public-avatar catalog
 - 🎙️ **Voice Management** - List available voices
 - 🎬 **Video Generation** - Create AI-generated videos
 - 📤 **Asset Upload** - Upload audio, images, and video for use in other APIs
 - 📡 **LiveAvatar Streaming** - Real-time avatar streaming sessions
+- 🤖 **OmniAvatar Adapter** - Use HeyGen render behind the provider-agnostic [OmniAvatar](https://github.com/plexusone/omniavatar) interfaces
 - 🔄 **Retry Logic** - Automatic retries with exponential backoff
 - ⚠️ **Error Handling** - Typed errors with request IDs
 
