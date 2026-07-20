@@ -134,8 +134,8 @@ github.com/pion/webrtc/v4 v4.2.17 h1:no7rmszKV1jkGz7GvErGp/VlnzGu/koVHO9CRjItiVU
 github.com/pion/webrtc/v4 v4.2.17/go.mod h1:xRtWZDJ0FbyW98WVCCgOvxaBM5gxqqJa7pCc4f+x/LI=
 github.com/pkg/errors v0.9.1 h1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=
 github.com/pkg/errors v0.9.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
-github.com/plexusone/omniavatar-core v0.2.0 h1:5SVl4hUATxQNLu0ECv0s68rBItmxA0pxx0whlEn+sxE=
-github.com/plexusone/omniavatar-core v0.2.0/go.mod h1:vp9MofUv8Z0LP8lBk1NsGPlO1XxcZkoJSTkH3wHoh6k=
+github.com/plexusone/omniavatar-core v0.3.0 h1:ggfIbXnS16hUiNR0eittfhtZYD2X/5Dgo567wn7ciec=
+github.com/plexusone/omniavatar-core v0.3.0/go.mod h1:vp9MofUv8Z0LP8lBk1NsGPlO1XxcZkoJSTkH3wHoh6k=
 github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 h1:Jamvg5psRIccs7FGNTlIRMkT8wgtp5eCXdBlqhYGL6U=
 github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/prometheus/client_golang v1.23.2 h1:Je96obch5RDVy3FDMndoUsjAhG5Edi49h0RJWRi/o0o=

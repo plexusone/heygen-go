@@ -47,7 +47,7 @@ require (
 	github.com/pion/transport/v4 v4.0.2 // indirect
 	github.com/pion/turn/v5 v5.0.12 // indirect
 	github.com/pion/webrtc/v4 v4.2.17 // indirect
-	github.com/plexusone/omniavatar-core v0.2.0 // render adapter uses v0.3.0 via workspace; bump on release
+	github.com/plexusone/omniavatar-core v0.3.0
 	github.com/prometheus/client_golang v1.23.2 // indirect
 	github.com/prometheus/client_model v0.6.2 // indirect
 	github.com/prometheus/common v0.70.0 // indirect
