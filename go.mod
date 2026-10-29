@@ -2,7 +2,7 @@ module github.com/plexusone/heygen-go
 
 go 1.26.4
 
-require github.com/livekit/protocol v1.53.0
+require github.com/livekit/protocol v1.53.1
 
 require github.com/petermattis/goid v0.0.0-20260820044319-269ab09b5261 // indirect
 
